@@ -15,7 +15,7 @@ var var_name,
 	jsonArr=[],
 	stateData;
 
-var width = 1200,
+var width = 900,
   	height = 500;
 
   var div = d3.select("body").append("div")   
@@ -139,7 +139,7 @@ state_svg.on("click", function(){
     d3.select(".canvas").remove();
     d3.select("#unitsTag").remove();
     var margin = {top: 80, right: 50, bottom: 0, left: 50},
-        width = 1200 - margin.right-margin.left,
+        width = 700 - margin.right-margin.left,
         height = 800 - margin.top - margin.bottom;
 
     var state_Country = filterJSON(jsonArr,'STATE',this.id);
@@ -150,7 +150,7 @@ state_svg.on("click", function(){
     });
 
   var xLength =  d3.scale.linear().domain([Number(sorted_Country[0]),Number(sorted_Country[sorted_Country.length-1])])
-              .range([width-300,1]);
+              .range([width,1]);
 
   var yHeight = 25;  //bar height
 
@@ -169,7 +169,8 @@ state_svg.on("click", function(){
   var y = d3.scale.linear().domain([Number(sorted_Country[0]),Number(sorted_Country[sorted_Country.length-1])])
               .range([0,height]);
 
-  var unitsTag = d3.select("body").append("text").attr("id","unitsTag").style("margin-left",margin.left+"px").text("Units: US dollars")
+  var unitsTag = d3.select("body").append("text").attr("id","unitsTag").style("margin-left",margin.left+"px").text("Units: US dollars");
+
   var canvas = d3.select("body").append("div").attr("class","canvas").style("width",width+"px").style("margin-left",margin.left+"px");
   var ytextchart = canvas.append("div").attr("id","ytextchart").style("width","200px");
   var barchart = canvas.append("div").attr("id","barchart").style("width",width-210 +"px");
@@ -191,7 +192,7 @@ state_svg.on("click", function(){
                }else if (Number(val(d)/1000 <1)){
                   return Number(val(d));
                }
-            }).attr("word-break","keep-all").attr("text-anchor","start");
+            }).attr("word-break","keep-all");
 
 
    });
